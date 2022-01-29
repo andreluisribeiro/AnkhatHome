@@ -2,17 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Estado : MonoBehaviour
+public abstract class Estado : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public MaquinaEstados maquinaDeEstados;
+    public string TAG_ESTADO;
+    public string[] estadosOuvir;
+    public virtual void Start() {
+        this.maquinaDeEstados = GameObject.Find("MaquinaEstados").GetComponent<MaquinaEstados>();
     }
-
-    // Update is called once per frame
-    void Update()
+    public void Executar()
     {
-        
+        if(this.Test()) {
+            this.maquinaDeEstados.Transicao(this.TAG_ESTADO);
+            this.Limpar();
+        }
     }
+    public void Passo(string estadoAtual, string message) {
+        foreach (var eo in estadosOuvir)
+        {
+            Debug.Log("S["+TAG_ESTADO+"] => " + eo + ","+ estadoAtual);
+            if(eo == estadoAtual) {
+                this.Verificar(message);
+                break;
+            }
+        }
+    }
+    public abstract bool Test();
+    protected abstract void Verificar(string message);
+    protected abstract void Limpar();
 }
