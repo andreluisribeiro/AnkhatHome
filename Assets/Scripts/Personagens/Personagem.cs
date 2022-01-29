@@ -99,7 +99,7 @@ public class Personagem : MonoBehaviour
         this.tempoParado = tempo;
     }
 
-    bool podeAgir(){
+    public bool podeAgir(){
         if(tempoParado > 0){
             return false;
         }

@@ -9,6 +9,7 @@ public class Ataques : MonoBehaviour
     public GameObject melee, ranged;
     public Vector3 spawnMelee, spawnRanged;
     public float cooldownR, cooldownM;
+    public float travaR, travaM;
     public float lastR, lastM, atual;
     public bool player;
     // Start is called before the first frame update
@@ -32,20 +33,22 @@ public class Ataques : MonoBehaviour
     }
 
     void AtaqueMelee() {
-        bool podeAtacar = true;
+        bool podeAtacar = this.personagem.podeAgir();
         if(podeAtacar && Time.time > lastM + cooldownM) {
             Instantiate(this.melee, transform.position + spawnMelee, transform.rotation);
             lastM = Time.time;
+            this.personagem.parar(travaM);
         }
     }
 
     
     void AtaqueRanged() {
-        bool podeAtacar = true;
+        bool podeAtacar = this.personagem.podeAgir();
         Debug.Log(""+(Time.time + cooldownR) + ", " + lastR);
         if(podeAtacar && Time.time > lastR + cooldownR) {
             Instantiate(this.ranged, transform.position + spawnRanged, transform.rotation);
             lastR = Time.time;
+            this.personagem.parar(travaR);
         }
     }
 
