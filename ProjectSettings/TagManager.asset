@@ -5,14 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - recebedores
+  - chao
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - chao
   - Water
   - UI
-  - 
+  - player
   - 
   - 
   - 
