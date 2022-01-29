@@ -9,18 +9,22 @@ public class Personagem : MonoBehaviour
     public int jumpForce = 5;
     public float jumpGravity = 1;
     public Transform chaoPrefab;
+    public float velDash = 10;
+    public float dashTime = 1;
+    public float tempoParado = 0;
     private GameObject chaoCriado;
     private bool jumping = false;
     public float jumpDist = 1;
     private int limitador = 0;
-    public float tempoParado = 0;
-
+    private bool dash = false;
     private Rigidbody2D rb;
+    
     // Start is called before the first frame update
     void Start()
     {
         rb = this.GetComponent<Rigidbody2D>();
     }
+
     // Update is called once per frame
     void Update()
     {
@@ -29,10 +33,23 @@ public class Personagem : MonoBehaviour
     void input(){
         if(tempoParado > 0){
             tempoParado -= Time.deltaTime;
+            if(tempoParado <= 0){
+                if(dash){
+                    this.rb.velocity = new Vector2(0,0);
+                    dash = false;
+                }
+            }
         }else{
-            Debug.Log(".");
             checaPulo();
             andar();
+            checaDash();
+        }
+    }
+    void checaDash(){
+        if(Input.GetButtonDown("Fire1")){
+            if(podeAgir()){
+                dash = true;
+            }
         }
     }
     
@@ -63,9 +80,13 @@ public class Personagem : MonoBehaviour
         Vector3 vel = rb.velocity;
         vel.x = h * speed;
         if(!jumping){
-            vel.y = Mathf.Round(v-limitador) * speed;
+            vel.y = (v-(Mathf.Abs(v)*limitador)) * speed;
         }
-        this.rb.velocity = vel;
+        if(dash){
+            runDash(vel);
+            return;
+        }
+        this.rb.velocity = vel; 
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
@@ -82,6 +103,10 @@ public class Personagem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "limitador"){
+            if(dash){
+                this.rb.velocity = new Vector2(0,0);
+                dash = false;
+            }
             if(transform.position.y > other.transform.position.y){
                 limitador = -1;
             }else{
@@ -99,6 +124,11 @@ public class Personagem : MonoBehaviour
     public void parar(float tempo){
         this.rb.velocity = new Vector2(0,0);
         this.tempoParado = tempo;
+    }
+    public void runDash(Vector3 direction){
+        parar(dashTime);
+        rb.AddForce(direction * velDash, ForceMode2D.Impulse);
+        dash = true;
     }
 
     public bool podeAgir(){
