@@ -44,7 +44,6 @@ public class Ataques : MonoBehaviour
     
     void AtaqueRanged() {
         bool podeAtacar = this.personagem.podeAgir();
-        Debug.Log(""+(Time.time + cooldownR) + ", " + lastR);
         if(podeAtacar && Time.time > lastR + cooldownR) {
             Instantiate(this.ranged, transform.position + spawnRanged, transform.rotation);
             lastR = Time.time;

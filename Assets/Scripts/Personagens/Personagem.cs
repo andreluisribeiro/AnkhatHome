@@ -13,7 +13,7 @@ public class Personagem : MonoBehaviour
     private bool jumping = false;
     public float jumpDist = 1;
     private int limitador = 0;
-    private float tempoParado = 0;
+    public float tempoParado = 0;
 
     private Rigidbody2D rb;
     // Start is called before the first frame update
@@ -30,6 +30,7 @@ public class Personagem : MonoBehaviour
         if(tempoParado > 0){
             tempoParado -= Time.deltaTime;
         }else{
+            Debug.Log(".");
             checaPulo();
             andar();
         }
@@ -96,6 +97,7 @@ public class Personagem : MonoBehaviour
     }
 
     public void parar(float tempo){
+        this.rb.velocity = new Vector2(0,0);
         this.tempoParado = tempo;
     }
 
