@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Ataques))]
 public class Player : Personagem
 {
-    private GameObject[] anubises;
+    private GameObject[] anubises = new GameObject[100];
     public GameObject cenario;
     public AudioSource somAmbiente;
     public AudioClip som_real;
@@ -190,6 +190,6 @@ public class Player : Personagem
 
     public override void morrer()
     {
-        this.parar(99999999999);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
     }
 }
