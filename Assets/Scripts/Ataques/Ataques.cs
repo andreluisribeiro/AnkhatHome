@@ -41,7 +41,6 @@ public class Ataques : MonoBehaviour
         }
     }
 
-    
     void AtaqueRanged() {
         bool podeAtacar = this.personagem.podeAgir();
         if(podeAtacar && Time.time > lastR + cooldownR) {
