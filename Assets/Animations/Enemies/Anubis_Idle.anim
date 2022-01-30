@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: parado
+  m_Name: Anubis_Idle
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,9 +20,11 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 4947973468888371335, guid: b9a478c79edcb71458abfa511758be59, type: 3}
+      value: {fileID: 6322370937044896016, guid: b735a3ac247e4b246bb5565f8052358a, type: 3}
     - time: 0.083333336
-      value: {fileID: 8058810537200799015, guid: b9a478c79edcb71458abfa511758be59, type: 3}
+      value: {fileID: -2659165985983553313, guid: b735a3ac247e4b246bb5565f8052358a, type: 3}
+    - time: 0.16666667
+      value: {fileID: 2015715344718713656, guid: b735a3ac247e4b246bb5565f8052358a, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -42,14 +44,15 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 4947973468888371335, guid: b9a478c79edcb71458abfa511758be59, type: 3}
-    - {fileID: 8058810537200799015, guid: b9a478c79edcb71458abfa511758be59, type: 3}
+    - {fileID: 6322370937044896016, guid: b735a3ac247e4b246bb5565f8052358a, type: 3}
+    - {fileID: -2659165985983553313, guid: b735a3ac247e4b246bb5565f8052358a, type: 3}
+    - {fileID: 2015715344718713656, guid: b735a3ac247e4b246bb5565f8052358a, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.16666667
+    m_StopTime: 0.25
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

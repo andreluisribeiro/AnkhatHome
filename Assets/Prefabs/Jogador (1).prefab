@@ -97,7 +97,7 @@ Animator:
   m_GameObject: {fileID: 7818841656094300038}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 09820d75f6f535c4f87066b1f22a4442, type: 2}
+  m_Controller: {fileID: 9100000, guid: e259c94c610f7034c8b8b6adbbca3021, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -144,6 +144,7 @@ MonoBehaviour:
   jumpGravity: 2.5
   chaoPrefab: {fileID: 7903692550017726250, guid: 54423950b42ba1947ae8c792bdbbf106, type: 3}
   jumpDist: 0.265
+  tempoParado: 0
 --- !u!61 &6184456593087664179
 BoxCollider2D:
   m_ObjectHideFlags: 0
