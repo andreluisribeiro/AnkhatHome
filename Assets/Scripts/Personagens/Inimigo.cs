@@ -11,6 +11,7 @@ public class Inimigo : Personagem
     public float fadeSpeed;
     private bool fade = true;
     public float forca = 1;
+    public MusicManager soundManager;
     // Start is called before the first frame update
     public override void Start()
     {
@@ -19,6 +20,7 @@ public class Inimigo : Personagem
         Color c = this.GetComponent<SpriteRenderer>().color;
         c.a = 0;
         this.GetComponent<SpriteRenderer>().color = c;
+        this.soundManager = this.GetComponent<MusicManager>();
     }
 
     // Update is called once per frame
@@ -59,6 +61,7 @@ public class Inimigo : Personagem
         if(x_dist < rangeX && y_dist < rangeY){
             if(atk.AtaqueMelee(mirror)){
                 this.GetComponent<Animator>().SetTrigger("Attack");
+                this.soundManager.Play("Attack");
             }
         }
     }
@@ -76,6 +79,8 @@ public class Inimigo : Personagem
     {
         Destroy(this.gameObject);
     }
+
+    
 
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.tag == "Player") {

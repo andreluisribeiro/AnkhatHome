@@ -20,6 +20,9 @@ public class Player : Personagem
     private Animator animator;
     private Ataques ataques;
     private SpriteRenderer spriteRenderer;
+
+    public MusicManager soundManager;
+
     // Start is called before the first frame update
     public override void Start()
     {
@@ -27,6 +30,7 @@ public class Player : Personagem
         this.animator = this.GetComponent<Animator>();
         this.ataques = this.GetComponent<Ataques>();
         this.spriteRenderer = this.GetComponent<SpriteRenderer>();
+        this.soundManager = this.GetComponent<MusicManager>();
     }
     // Update is called once per frame
     public override void Update()
@@ -53,10 +57,12 @@ public class Player : Personagem
             
             if(ataques.AtaqueMelee(this.spriteRenderer.flipX)) {
                 this.animator.SetTrigger("Attack");
+                this.soundManager.Play("Bastet_Attack");
             }
         }else if(god && Input.GetButtonDown("Fire3")) {
             if(ataques.AtaqueRanged(this.spriteRenderer.flipX)) {
                 this.animator.SetTrigger("Cast");
+                this.soundManager.Play("Bastet_Cast");
             }
         }else if(Input.GetButtonDown("Fire1")) {
             ataques.dash();
@@ -71,7 +77,7 @@ public class Player : Personagem
     void movimento(){
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
-
+        
         Vector3 vel = this.rb.velocity;
         vel.x = h * velocidade;
         if(!jumping){
@@ -107,6 +113,8 @@ public class Player : Personagem
         this.rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         this.rb.gravityScale = jumpGravity;
         jumping = true;
+        
+        this.soundManager.Play(god? "Bastet_Pulo" : "Tet_Pulo");
     }
 
     public override bool podeAgir(){
