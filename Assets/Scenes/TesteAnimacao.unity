@@ -248,6 +248,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 9220267901956433556, guid: 4dcd6dffa07919f4f87201c8c099ee81, type: 3}
+    - target: {fileID: 6184456593087664179, guid: 264533fbaf93bcb4e9594b1a429bba81, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184456593087664179, guid: 264533fbaf93bcb4e9594b1a429bba81, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.64
+      objectReference: {fileID: 0}
     - target: {fileID: 6789628912071748919, guid: 264533fbaf93bcb4e9594b1a429bba81, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -294,7 +302,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7818841656094300038, guid: 264533fbaf93bcb4e9594b1a429bba81, type: 3}
       propertyPath: m_Name
-      value: Jogador (1)
+      value: Jogador
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 264533fbaf93bcb4e9594b1a429bba81, type: 3}
