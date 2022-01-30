@@ -12,7 +12,7 @@ public class ArmaRanged : Arma
     void Update()
     {
         this.transform.Translate(velocidade*Time.deltaTime, 0, 0);
-        if(this.transform.position.y > 20)
+        if(this.transform.position.x > 20)
             Destroy(this.gameObject);
     }
     
