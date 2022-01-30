@@ -17,7 +17,7 @@ public class ButtonPlay : MonoBehaviour
 
     public IEnumerator Change() {
         yield return new WaitForSeconds(.5f);
-        UnityEngine.SceneManagement.SceneManager.LoadScene("TesteAnimacao");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("GamePlays");
     }
     
 }
