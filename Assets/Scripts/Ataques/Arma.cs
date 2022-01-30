@@ -12,6 +12,7 @@ public class Arma : MonoBehaviour
         this.GetComponent<SpriteRenderer>().sortingOrder = (int)transform.position.y*100;
     }
     protected void OnTriggerEnter2D(Collider2D other) {
+        print(other.tag);
         if(other.tag == tagAlvo){
             if( Mathf.Abs(transform.position.y-other.transform.position.y) < facilidadeAcertar){
                 other.gameObject.SendMessage("dano", this.dano);
