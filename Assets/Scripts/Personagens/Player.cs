@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class Player : Personagem
 {
     public int jumpForce = 5;
@@ -14,10 +15,15 @@ public class Player : Personagem
     public float jumpDist = 1;
     private int limitador = 0;
     private bool dash = false;
+    private bool god = false;
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
     // Start is called before the first frame update
     public override void Start()
     {
         base.Start();
+        this.animator = this.GetComponent<Animator>();
+        this.spriteRenderer = this.GetComponent<SpriteRenderer>();
     }
     // Update is called once per frame
     public override void Update()
@@ -30,10 +36,16 @@ public class Player : Personagem
             }
             input();
         }
+        this.spriteRenderer.flipX = this.rb.velocity.x < 0;
+        
     }
     void input(){
         checaPulo();
         movimento();
+        if(Input.GetKeyUp(KeyCode.Q)) {
+            god = !god;
+            this.animator.SetBool("GodMode", god);
+        }
     }
     void movimento(){
         float h = Input.GetAxis("Horizontal");
@@ -44,6 +56,7 @@ public class Player : Personagem
         if(!jumping){
             vel.y = (v-(Mathf.Abs(v)*limitador)) * velocidade;
         }
+        this.animator.SetFloat("Movement", vel.magnitude);
         this.rb.velocity = vel; 
     }
     public void runDash(){

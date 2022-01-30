@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 4063386797232428910}
   - component: {fileID: 8717363701898050980}
   - component: {fileID: 3863664909387217273}
-  - component: {fileID: 2097183196830336603}
   - component: {fileID: 6184456593087664179}
   - component: {fileID: 9190225547294847877}
+  - component: {fileID: 1370781433}
   m_Layer: 6
-  m_Name: Jogador (1)
+  m_Name: Jogador
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,24 +127,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2097183196830336603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7818841656094300038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a672e006b5e9920488c60f5e0821291f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
-  jumpForce: 8
-  jumpGravity: 2.5
-  chaoPrefab: {fileID: 7903692550017726250, guid: 54423950b42ba1947ae8c792bdbbf106, type: 3}
-  jumpDist: 0.265
-  tempoParado: 0
 --- !u!61 &6184456593087664179
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -190,9 +172,32 @@ MonoBehaviour:
   spawnRanged: {x: 0.5, y: 0, z: 0}
   cooldownR: 1
   cooldownM: 1
+  cooldownD: 0
   travaR: 0.5
   travaM: 0.5
+  travaD: 0
   lastR: 0
   lastM: 0
+  lastD: 0
   atual: 0
   player: 0
+--- !u!114 &1370781433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7818841656094300038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b0d32c04a38fc1489cfa2dae100d3ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocidade: 2
+  tempoParado: 0
+  jumpForce: 8
+  jumpGravity: 2.5
+  chaoPrefab: {fileID: 7903692550017726250, guid: 54423950b42ba1947ae8c792bdbbf106, type: 3}
+  velDash: 5
+  dashTime: 0.2
+  jumpDist: 0.265
