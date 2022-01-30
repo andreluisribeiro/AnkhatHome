@@ -13,4 +13,6 @@ public class ArmaRanged : Arma
         if(this.transform.position.y > 20)
             Destroy(this.gameObject);
     }
+    
+    
 }

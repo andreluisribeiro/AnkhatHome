@@ -7,7 +7,7 @@ public abstract class Personagem : MonoBehaviour
 {
     public int velocidade = 10;
     public float tempoParado = 0;
-
+    public float hp = 5;
     protected Rigidbody2D rb;
     // Start is called before the first frame update
     public virtual void Start()
@@ -28,4 +28,11 @@ public abstract class Personagem : MonoBehaviour
     public virtual bool podeAgir(){
         return tempoParado > 0;
     }
+
+    public void dano(float d) {
+        Debug.Log("Dano: " + this.gameObject.name);
+        hp = (hp - d < 0) ? 0 : hp - d;
+    }
+
+    
 }

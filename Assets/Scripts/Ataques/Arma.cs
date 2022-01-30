@@ -5,10 +5,8 @@ using UnityEngine;
 public class Arma : MonoBehaviour
 {
     public float dano = 1;
-    private void OnCollisionEnter(Collision other) {
-        Personagem p;
-        if(other.gameObject.TryGetComponent<Personagem>(out p)) {
-            // TODO dano
-        }
+    protected void OnTriggerEnter2D(Collider2D other) {
+        other.gameObject.SendMessage("dano", this.dano);
     }
+    
 }
