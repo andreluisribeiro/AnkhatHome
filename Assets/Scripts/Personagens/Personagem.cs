@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public abstract class Personagem : MonoBehaviour
 {
-    public int velocidade = 10;
+    public float velocidade = 10;
     public float tempoParado = 0;
 
     protected Rigidbody2D rb;
