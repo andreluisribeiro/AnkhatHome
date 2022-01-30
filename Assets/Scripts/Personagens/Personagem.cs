@@ -18,17 +18,18 @@ public abstract class Personagem : MonoBehaviour
     // Update is called once per frame
     public virtual void Update()
     {
-        if(tempoParado > 0){
+        if(tempoParado >= 0){
             tempoParado -= Time.deltaTime;
         }
         this.GetComponent<SpriteRenderer>().sortingOrder = (int)Mathf.Abs(this.transform.position.y*100);
+        checkMirror();
     }
     public void parar(float tempo){
         this.rb.velocity = new Vector2(0,0);
         this.tempoParado = tempo;
     }
     public virtual bool podeAgir(){
-        return tempoParado > 0;
+        return tempoParado < 0;
     }
 
     public void dano(float d) {
@@ -40,7 +41,7 @@ public abstract class Personagem : MonoBehaviour
             }
         }   
     }
-
+    public abstract void checkMirror();
     public abstract void morrer();
 
     

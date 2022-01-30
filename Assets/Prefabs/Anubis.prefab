@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 908165752}
   - component: {fileID: 908165750}
   - component: {fileID: 908165751}
+  - component: {fileID: 1821495980735919565}
   m_Layer: 0
   m_Name: Anubis
   m_TagString: Inimigo
@@ -167,6 +168,36 @@ MonoBehaviour:
   velocidade: 1
   tempoParado: 0
   hp: 1
+  rangeX: 0.5
+  rangeY: 0.125
   jogador: {fileID: 0}
+  atk: {fileID: 1821495980735919565}
   fadeSpeed: 0
   forca: 1
+--- !u!114 &1821495980735919565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8849004855832700053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 555379fa48b62c741b1496656481b3d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  personagem: {fileID: 0}
+  melee: {fileID: 4028938440395627098, guid: dfb21e462ed0192498e4ac23991dfa4d, type: 3}
+  ranged: {fileID: 407732687003376346, guid: 444fb5f864696284db385da6fb64b398, type: 3}
+  spawnMelee: {x: 0.5, y: 0, z: 0}
+  spawnRanged: {x: 0.5, y: 0, z: 0}
+  cooldownR: 0.75
+  cooldownM: 0.75
+  cooldownD: 0
+  travaR: 0.5
+  travaM: 0.5
+  travaD: 0.5
+  lastR: 0
+  lastM: 0
+  lastD: 0
+  player: 0

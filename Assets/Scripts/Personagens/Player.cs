@@ -40,10 +40,6 @@ public class Player : Personagem
             }
             input();
         }
-        if(this.rb.velocity.x != 0)
-            mirror = this.rb.velocity.x < 0;
-        this.spriteRenderer.flipX = mirror;
-        
     }
     void input(){
         checaPulo();
@@ -65,6 +61,12 @@ public class Player : Personagem
         }else if(Input.GetButtonDown("Fire1")) {
             ataques.dash();
         }
+    }
+    public override void checkMirror()
+    {
+        if(this.rb.velocity.x != 0)
+            mirror = this.rb.velocity.x < 0;
+        this.spriteRenderer.flipX = mirror;
     }
     void movimento(){
         float h = Input.GetAxis("Horizontal");
