@@ -198,12 +198,20 @@ MonoBehaviour:
   tempoParado: 0
   hp: 5
   imune: 0
+  cenario: {fileID: 0}
+  somAmbiente: {fileID: 0}
+  som_real: {fileID: 8300000, guid: b5337900769c6a94a906ddb1fac438f3, type: 3}
+  som_egito: {fileID: 8300000, guid: 388f83f8fbba7f74ea28387519266af9, type: 3}
+  fundo_material: {fileID: 21300000, guid: 981ec8264698aaf4c95ee8612328ed85, type: 3}
+  fundo_espiritual: {fileID: 21300000, guid: d3366799f1d7c2949a14953295211779, type: 3}
   jumpForce: 8
   jumpGravity: 2.5
   chaoPrefab: {fileID: 7903692550017726250, guid: 54423950b42ba1947ae8c792bdbbf106, type: 3}
   velDash: 5
   dashTime: 0.2
   jumpDist: 0.265
+  god: 0
+  mirror: 0
   soundManager: {fileID: 0}
 --- !u!82 &763081750
 AudioSource:

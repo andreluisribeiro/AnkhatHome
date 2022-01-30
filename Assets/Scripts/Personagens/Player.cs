@@ -8,6 +8,10 @@ public class Player : Personagem
 {
     private GameObject[] anubises;
     public GameObject cenario;
+    public AudioSource somAmbiente;
+    public AudioClip som_real;
+    public AudioClip som_egito;
+    
     public Sprite fundo_material;
     public Sprite fundo_espiritual;
     public int jumpForce = 5;
@@ -59,12 +63,16 @@ public class Player : Personagem
                 foreach(GameObject go in anubises)
                     go.SetActive(true);
                 anubises = new GameObject[100];
+                this.somAmbiente.clip = som_egito;
+                this.somAmbiente.Play();
             }else{
                 cenario.GetComponent<SpriteRenderer>().sprite = fundo_material;
                 GameObject[] gos = GameObject.FindGameObjectsWithTag("Inimigo");
                 foreach(GameObject go in gos)
                     go.SetActive(false);
                 anubises = gos;
+                this.somAmbiente.clip = som_real;
+                this.somAmbiente.Play();
             }
             this.animator.SetBool("GodMode", god);
         }

@@ -224,6 +224,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1370781433, guid: 264533fbaf93bcb4e9594b1a429bba81, type: 3}
+      propertyPath: cenario
+      value: 
+      objectReference: {fileID: 1866354184}
+    - target: {fileID: 1370781433, guid: 264533fbaf93bcb4e9594b1a429bba81, type: 3}
+      propertyPath: somAmbiente
+      value: 
+      objectReference: {fileID: 934008552}
     - target: {fileID: 6789628912071748919, guid: 264533fbaf93bcb4e9594b1a429bba81, type: 3}
       propertyPath: m_RootOrder
       value: 2
