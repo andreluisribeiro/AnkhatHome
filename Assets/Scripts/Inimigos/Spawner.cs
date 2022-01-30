@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    public GameObject jogador;
     public GameObject inimigo;
     public Collider2D spawnArea;
     public float spawnTime;
@@ -30,6 +31,7 @@ public class Spawner : MonoBehaviour
         float yPos = yPositions[index];
         spawnPosition.y = yPos;
 
-        Instantiate(inimigo , spawnPosition, Quaternion.identity);
+        GameObject ini = Instantiate(inimigo , spawnPosition, Quaternion.identity);
+        ini.GetComponent<Inimigo>().jogador = this.jogador;
     }
 }
