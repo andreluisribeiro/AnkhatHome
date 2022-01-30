@@ -8,14 +8,14 @@ public class Ataques : MonoBehaviour
     public Personagem personagem;
     public GameObject melee, ranged;
     public Vector3 spawnMelee, spawnRanged;
-    public float cooldownR, cooldownM;
-    public float travaR, travaM;
-    public float lastR, lastM, atual;
+    public float cooldownR, cooldownM, cooldownD;
+    public float travaR, travaM, travaD;
+    public float lastR, lastM, lastD, atual;
     public bool player;
     // Start is called before the first frame update
     void Start()
     {
-        personagem = this.GetComponent<Personagem>(); 
+        personagem = this.GetComponent<Player>();
         player = this.gameObject.tag == "Player";
     }
 
@@ -23,11 +23,11 @@ public class Ataques : MonoBehaviour
         atual = Time.time;
         if(player) {
             if(Input.GetKey(KeyCode.J)) {
-                Debug.Log("J");
                 AtaqueMelee();
-            }
-            else if(Input.GetKey(KeyCode.K)) {
+            }else if(Input.GetKey(KeyCode.K)) {
                 AtaqueRanged();
+            }else if(Input.GetButtonDown("Fire1")) {
+                dash();
             }
         }
     }
@@ -51,5 +51,14 @@ public class Ataques : MonoBehaviour
         }
     }
 
+    void dash(){
+        if(player){
+            Player jogador = (Player)this.personagem;
+            if(jogador.podeAgir() && Time.time > lastD + cooldownD){
+                lastD = Time.time;
+                jogador.runDash();
+            }
+        }
+    }
     
 }
