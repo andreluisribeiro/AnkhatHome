@@ -54,9 +54,14 @@ public class Player : Personagem
         }
         
         if(god && Input.GetButtonDown("Fire2")) {
-            ataques.AtaqueMelee(this.spriteRenderer.flipX);
+            
+            if(ataques.AtaqueMelee(this.spriteRenderer.flipX)) {
+                this.animator.SetTrigger("Attack");
+            }
         }else if(god && Input.GetButtonDown("Fire3")) {
-            ataques.AtaqueRanged(this.spriteRenderer.flipX);
+            if(ataques.AtaqueRanged(this.spriteRenderer.flipX)) {
+                this.animator.SetTrigger("Cast");
+            }
         }else if(Input.GetButtonDown("Fire1")) {
             ataques.dash();
         }
