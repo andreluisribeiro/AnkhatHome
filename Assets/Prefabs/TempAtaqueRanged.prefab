@@ -99,6 +99,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mirror: 1
   dano: 1
+  tagAlvo: Inimigo
+  facilidadeAcertar: 0.125
   velocidade: 3
 --- !u!61 &1436052757
 BoxCollider2D:

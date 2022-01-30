@@ -6,9 +6,18 @@ public class Arma : MonoBehaviour
 {
     public bool mirror = true;
     public float dano = 1;
-
+    public string tagAlvo;
+    public float facilidadeAcertar;
+    void Start() {
+        this.GetComponent<SpriteRenderer>().sortingOrder = (int)transform.position.y*100;
+    }
     protected void OnTriggerEnter2D(Collider2D other) {
-        other.gameObject.SendMessage("dano", this.dano);
+        if(other.tag == tagAlvo){
+            if( Mathf.Abs(transform.position.y-other.transform.position.y) < facilidadeAcertar){
+                other.gameObject.SendMessage("dano", this.dano);
+                Destroy(this.gameObject);
+            }
+        }
     }
     
 }

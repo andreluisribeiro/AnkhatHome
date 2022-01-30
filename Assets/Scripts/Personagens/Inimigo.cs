@@ -10,6 +10,7 @@ public class Inimigo : Personagem
     // Start is called before the first frame update
     public override void Start()
     {
+        imune = true;
         base.Start();
         Color c = this.GetComponent<SpriteRenderer>().color;
         c.a = 0;
@@ -37,6 +38,7 @@ public class Inimigo : Personagem
         this.GetComponent<SpriteRenderer>().color = c;
         if(c.a >= 1){
             fade = false;
+            imune = false;
         }
     }
 

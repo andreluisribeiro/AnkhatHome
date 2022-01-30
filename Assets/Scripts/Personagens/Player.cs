@@ -36,6 +36,7 @@ public class Player : Personagem
             if(dash){
                 this.rb.velocity = new Vector2(0,0);
                 dash = false;
+                imune = false;
             }
             input();
         }
@@ -47,14 +48,14 @@ public class Player : Personagem
     void input(){
         checaPulo();
         movimento();
-        if(Input.GetKeyUp(KeyCode.Q)) {
+        if(Input.GetButtonDown("God")) {
             god = !god;
             this.animator.SetBool("GodMode", god);
         }
         
-        if(god && Input.GetKey(KeyCode.J)) {
+        if(god && Input.GetButtonDown("Fire2")) {
             ataques.AtaqueMelee(this.spriteRenderer.flipX);
-        }else if(god && Input.GetKey(KeyCode.K)) {
+        }else if(god && Input.GetButtonDown("Fire3")) {
             ataques.AtaqueRanged(this.spriteRenderer.flipX);
         }else if(Input.GetButtonDown("Fire1")) {
             ataques.dash();
@@ -77,6 +78,7 @@ public class Player : Personagem
         parar(dashTime);
         this.rb.AddForce(direction * velDash, ForceMode2D.Impulse);
         dash = true;
+        imune = true;
     }
     void checaPulo(){
         if(Input.GetButtonDown("Jump")){
@@ -131,6 +133,7 @@ public class Player : Personagem
             if(dash){
                 this.rb.velocity = new Vector2(0,0);
                 dash = false;
+                imune = false;
             }
             if(transform.position.y > other.transform.position.y){
                 limitador = -1;
