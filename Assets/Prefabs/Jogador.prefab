@@ -195,6 +195,7 @@ MonoBehaviour:
   velocidade: 2
   tempoParado: 0
   hp: 5
+  imune: 0
   jumpForce: 8
   jumpGravity: 2.5
   chaoPrefab: {fileID: 7903692550017726250, guid: 54423950b42ba1947ae8c792bdbbf106, type: 3}

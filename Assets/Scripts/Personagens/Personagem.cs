@@ -9,7 +9,7 @@ public abstract class Personagem : MonoBehaviour
     public float tempoParado = 0;
     public float hp = 5;
     protected Rigidbody2D rb;
-    protected bool imune;
+    public bool imune;
     // Start is called before the first frame update
     public virtual void Start()
     {

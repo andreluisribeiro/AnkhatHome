@@ -24,14 +24,17 @@ public class Spawner : MonoBehaviour
     }
 
     void spawn(){
-        Vector2 spawnPosition = new Vector2();
-        spawnPosition.x = Random.Range(spawnArea.bounds.min.x, spawnArea.bounds.max.x);
+        if(jogador.GetComponent<Player>().god){
+            Vector2 spawnPosition = new Vector2();
+            spawnPosition.x = Random.Range(spawnArea.bounds.min.x, spawnArea.bounds.max.x);
 
-        int index = Random.Range(0, yPositions.Length);
-        float yPos = yPositions[index];
-        spawnPosition.y = yPos;
+            int index = Random.Range(0, yPositions.Length);
+            float yPos = yPositions[index];
+            spawnPosition.y = yPos;
 
-        GameObject ini = Instantiate(inimigo , spawnPosition, Quaternion.identity);
-        ini.GetComponent<Inimigo>().jogador = this.jogador;
+            GameObject ini = Instantiate(inimigo , spawnPosition, Quaternion.identity);
+            ini.GetComponent<Inimigo>().jogador = this.jogador;
+        }
+        
     }
 }
