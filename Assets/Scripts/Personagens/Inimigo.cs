@@ -5,7 +5,7 @@ using UnityEngine;
 public class Inimigo : MonoBehaviour
 {
     public float velocidade;
-    
+    public int hp;
     // Start is called before the first frame update
     void Start()
     {
