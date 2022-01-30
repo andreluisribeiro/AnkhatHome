@@ -32,7 +32,12 @@ public abstract class Personagem : MonoBehaviour
     public void dano(float d) {
         Debug.Log("Dano: " + this.gameObject.name);
         hp = (hp - d < 0) ? 0 : hp - d;
+        if(hp == 0) {
+            this.morrer();
+        }
     }
+
+    public abstract void morrer();
 
     
 }

@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 024919cafc4158a4b913059cf27a33ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mirror: 1
   dano: 1
   velocidade: 3
 --- !u!61 &1436052757

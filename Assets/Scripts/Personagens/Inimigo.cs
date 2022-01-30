@@ -6,6 +6,7 @@ public class Inimigo : Personagem
     public GameObject jogador;
     public float fadeSpeed;
     private bool fade = true;
+    public float forca = 1;
     // Start is called before the first frame update
     public override void Start()
     {
@@ -36,6 +37,17 @@ public class Inimigo : Personagem
         this.GetComponent<SpriteRenderer>().color = c;
         if(c.a >= 1){
             fade = false;
+        }
+    }
+
+    public override void morrer()
+    {
+        Destroy(this.gameObject);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        if(other.gameObject.tag == "Player") {
+            other.gameObject.SendMessage("dano", this.forca);
         }
     }
 }

@@ -10,7 +10,7 @@ public class Ataques : MonoBehaviour
     public Vector3 spawnMelee, spawnRanged;
     public float cooldownR, cooldownM, cooldownD;
     public float travaR, travaM, travaD;
-    public float lastR, lastM, lastD, atual;
+    public float lastR, lastM, lastD;
     public bool player;
     // Start is called before the first frame update
     void Start()
@@ -19,38 +19,32 @@ public class Ataques : MonoBehaviour
         player = this.gameObject.tag == "Player";
     }
 
-    void Update() {
-        atual = Time.time;
-        if(player) {
-            if(Input.GetKey(KeyCode.J)) {
-                AtaqueMelee();
-            }else if(Input.GetKey(KeyCode.K)) {
-                AtaqueRanged();
-            }else if(Input.GetButtonDown("Fire1")) {
-                dash();
-            }
-        }
-    }
-
-    void AtaqueMelee() {
+    public void AtaqueMelee(bool mirror = false) {
         bool podeAtacar = this.personagem.podeAgir();
         if(podeAtacar && Time.time > lastM + cooldownM) {
-            Instantiate(this.melee, transform.position + spawnMelee, transform.rotation);
+            Vector3 spw = spawnMelee;
+            spw.x *= (mirror? -1:1);
+            
+            GameObject go = Instantiate(this.melee, transform.position + spw, transform.rotation);
+            go.GetComponent<Arma>().mirror = mirror;
             lastM = Time.time;
             this.personagem.parar(travaM);
         }
     }
 
-    void AtaqueRanged() {
+    public void AtaqueRanged(bool mirror = false) {
         bool podeAtacar = this.personagem.podeAgir();
         if(podeAtacar && Time.time > lastR + cooldownR) {
-            Instantiate(this.ranged, transform.position + spawnRanged, transform.rotation);
+            Vector3 spw = spawnRanged;
+            spw.x *= (mirror? -1:1);
+            GameObject go = Instantiate(this.ranged, transform.position + spw, transform.rotation);
+            go.GetComponent<Arma>().mirror = mirror;
             lastR = Time.time;
             this.personagem.parar(travaR);
         }
     }
 
-    void dash(){
+    public void dash(){
         if(player){
             Player jogador = (Player)this.personagem;
             if(jogador.podeAgir() && Time.time > lastD + cooldownD){

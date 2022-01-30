@@ -6,6 +6,12 @@ public class ArmaMelee : Arma
 {
     float multiplicador = 1;
     public float velocidade = 1;
+
+    private void Start() {
+        Vector3 v = this.transform.localScale;
+        v.x = this.mirror? -1:1;
+        this.transform.localScale = v;
+    }
     
     void Update()
     {

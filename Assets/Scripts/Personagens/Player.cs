@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Ataques))]
 public class Player : Personagem
 {
     public int jumpForce = 5;
@@ -15,14 +16,16 @@ public class Player : Personagem
     public float jumpDist = 1;
     private int limitador = 0;
     private bool dash = false;
-    private bool god = false;
+    private bool god = false, mirror = false;
     private Animator animator;
+    private Ataques ataques;
     private SpriteRenderer spriteRenderer;
     // Start is called before the first frame update
     public override void Start()
     {
         base.Start();
         this.animator = this.GetComponent<Animator>();
+        this.ataques = this.GetComponent<Ataques>();
         this.spriteRenderer = this.GetComponent<SpriteRenderer>();
     }
     // Update is called once per frame
@@ -36,7 +39,9 @@ public class Player : Personagem
             }
             input();
         }
-        this.spriteRenderer.flipX = this.rb.velocity.x < 0;
+        if(this.rb.velocity.x != 0)
+            mirror = this.rb.velocity.x < 0;
+        this.spriteRenderer.flipX = mirror;
         
     }
     void input(){
@@ -45,6 +50,14 @@ public class Player : Personagem
         if(Input.GetKeyUp(KeyCode.Q)) {
             god = !god;
             this.animator.SetBool("GodMode", god);
+        }
+        
+        if(god && Input.GetKey(KeyCode.J)) {
+            ataques.AtaqueMelee(this.spriteRenderer.flipX);
+        }else if(god && Input.GetKey(KeyCode.K)) {
+            ataques.AtaqueRanged(this.spriteRenderer.flipX);
+        }else if(Input.GetButtonDown("Fire1")) {
+            ataques.dash();
         }
     }
     void movimento(){
@@ -131,5 +144,10 @@ public class Player : Personagem
         if(other.tag == "limitador"){
             limitador = 0;
         }
+    }
+
+    public override void morrer()
+    {
+        this.parar(99999999999);
     }
 }
