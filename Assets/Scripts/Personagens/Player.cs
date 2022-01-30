@@ -36,34 +36,37 @@ public class Player : Personagem
             if(dash){
                 this.rb.velocity = new Vector2(0,0);
                 dash = false;
+                imune = false;
             }
             input();
         }
-        if(this.rb.velocity.x != 0)
-            mirror = this.rb.velocity.x < 0;
-        this.spriteRenderer.flipX = mirror;
-        
     }
     void input(){
         checaPulo();
         movimento();
-        if(Input.GetKeyUp(KeyCode.Q)) {
+        if(Input.GetButtonDown("God")) {
             god = !god;
             this.animator.SetBool("GodMode", god);
         }
         
-        if(god && Input.GetKeyUp(KeyCode.J)) {
+        if(god && Input.GetButtonDown("Fire2")) {
             
             if(ataques.AtaqueMelee(this.spriteRenderer.flipX)) {
                 this.animator.SetTrigger("Attack");
             }
-        }else if(god && Input.GetKeyUp(KeyCode.K)) {
+        }else if(god && Input.GetButtonDown("Fire3")) {
             if(ataques.AtaqueRanged(this.spriteRenderer.flipX)) {
                 this.animator.SetTrigger("Cast");
             }
         }else if(Input.GetButtonDown("Fire1")) {
             ataques.dash();
         }
+    }
+    public override void checkMirror()
+    {
+        if(this.rb.velocity.x != 0)
+            mirror = this.rb.velocity.x < 0;
+        this.spriteRenderer.flipX = mirror;
     }
     void movimento(){
         float h = Input.GetAxis("Horizontal");
@@ -82,6 +85,7 @@ public class Player : Personagem
         parar(dashTime);
         this.rb.AddForce(direction * velDash, ForceMode2D.Impulse);
         dash = true;
+        imune = true;
     }
     void checaPulo(){
         if(Input.GetButtonDown("Jump")){
@@ -136,6 +140,7 @@ public class Player : Personagem
             if(dash){
                 this.rb.velocity = new Vector2(0,0);
                 dash = false;
+                imune = false;
             }
             if(transform.position.y > other.transform.position.y){
                 limitador = -1;

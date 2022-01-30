@@ -15,7 +15,11 @@ public class Ataques : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        personagem = this.GetComponent<Player>();
+        if(this.gameObject.tag == "Player"){
+            personagem = this.GetComponent<Player>();
+        }else{
+            personagem = this.GetComponent<Inimigo>();
+        }
         player = this.gameObject.tag == "Player";
     }
 
