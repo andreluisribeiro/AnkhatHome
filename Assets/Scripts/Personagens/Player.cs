@@ -52,10 +52,15 @@ public class Player : Personagem
             this.animator.SetBool("GodMode", god);
         }
         
-        if(god && Input.GetKey(KeyCode.J)) {
-            ataques.AtaqueMelee(this.spriteRenderer.flipX);
-        }else if(god && Input.GetKey(KeyCode.K)) {
-            ataques.AtaqueRanged(this.spriteRenderer.flipX);
+        if(god && Input.GetKeyUp(KeyCode.J)) {
+            
+            if(ataques.AtaqueMelee(this.spriteRenderer.flipX)) {
+                this.animator.SetTrigger("Attack");
+            }
+        }else if(god && Input.GetKeyUp(KeyCode.K)) {
+            if(ataques.AtaqueRanged(this.spriteRenderer.flipX)) {
+                this.animator.SetTrigger("Cast");
+            }
         }else if(Input.GetButtonDown("Fire1")) {
             ataques.dash();
         }

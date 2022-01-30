@@ -19,7 +19,7 @@ public class Ataques : MonoBehaviour
         player = this.gameObject.tag == "Player";
     }
 
-    public void AtaqueMelee(bool mirror = false) {
+    public bool AtaqueMelee(bool mirror = false) {
         bool podeAtacar = this.personagem.podeAgir();
         if(podeAtacar && Time.time > lastM + cooldownM) {
             Vector3 spw = spawnMelee;
@@ -29,10 +29,12 @@ public class Ataques : MonoBehaviour
             go.GetComponent<Arma>().mirror = mirror;
             lastM = Time.time;
             this.personagem.parar(travaM);
+            return true;
         }
+        return false;
     }
 
-    public void AtaqueRanged(bool mirror = false) {
+    public bool AtaqueRanged(bool mirror = false) {
         bool podeAtacar = this.personagem.podeAgir();
         if(podeAtacar && Time.time > lastR + cooldownR) {
             Vector3 spw = spawnRanged;
@@ -41,7 +43,9 @@ public class Ataques : MonoBehaviour
             go.GetComponent<Arma>().mirror = mirror;
             lastR = Time.time;
             this.personagem.parar(travaR);
+            return true;
         }
+        return false;
     }
 
     public void dash(){
